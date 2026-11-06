@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Faculty Gradebook · Northgate{% endblock %}
+{% block content %}
+<section class="hero compact">
+  <div>
+    <p class="eyebrow">Faculty area</p>
+    <h1>Gradebook</h1>
+    <p class="lead">Grades and exam material for the current semester.</p>
+  </div>
+</section>
+
+<div class="cols">
+  <section>
+    <h2 class="sec">Recent grades</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Student</th><th>Course</th><th>Grade</th></tr></thead>
+        <tbody>
+          {% for n, c, g in gradebook %}
+          <tr><td>{{ n }}</td><td>{{ c }}</td><td>{{ g }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec">Exam vault</h2>
+    <div class="vault">
+      <p class="label">Final exam master key</p>
+      <p class="key">{{ flag }}</p>
+      <p class="meta">Do not share outside the faculty.</p>
+    </div>
+  </section>
+</div>
+{% endblock %}

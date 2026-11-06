@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">Fall semester</p>
+    <h1>Welcome back to Northgate.</h1>
+    <p class="lead">Check your timetable, read campus notices and find everything you need for the week.</p>
+  </div>
+  <aside class="id-card" aria-label="Your account">
+    <p class="label">Signed in as</p>
+    <p class="who">Guest Student</p>
+    <p class="meta">Role: <strong>{{ role }}</strong></p>
+    <p class="meta">ID: NU-2026-0417</p>
+  </aside>
+</section>
+
+<div class="cols">
+  <section>
+    <h2 class="sec">This week's classes</h2>
+    <div class="courses">
+      {% for c in courses %}
+      <article class="course">
+        <p class="code">{{ c.code }}</p>
+        <h3>{{ c.name }}</h3>
+        <p class="meta">{{ c.room }}</p>
+        <p class="tag">{{ c.tag }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec">Campus notices</h2>
+    <ul class="news">
+      {% for d, t in news %}
+      <li><span class="date">{{ d }}</span><span>{{ t }}</span></li>
+      {% endfor %}
+    </ul>
+    <a class="locked" href="{{ url_for('faculty') }}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      Faculty gradebook
+    </a>
+  </section>
+</div>
+{% endblock %}

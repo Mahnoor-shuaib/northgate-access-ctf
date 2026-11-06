@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Northgate Student Portal{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="top">
+    <a class="crest" href="{{ url_for('home') }}">
+      <svg viewBox="0 0 48 56" aria-hidden="true">
+        <path d="M24 2 4 9v19c0 13 9 22 20 26 11-4 20-13 20-26V9z" fill="#c9a227"/>
+        <path d="M24 7 9 12.5V28c0 10.5 6.8 17.8 15 21.2C32.2 45.8 39 38.500 39 28V12.500z" fill="#6b1d2a"/>
+        <path d="M24 17l9 4-9 4-9-4zM17 24.500v5c0 2 3.500 4 7 4s7-2 7-4v-5l-7 3z" fill="#f6e7b4"/>
+      </svg>
+      <span>
+        <strong>Northgate University</strong>
+        <small>Student Portal</small>
+      </span>
+    </a>
+    <nav>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('faculty') }}">Faculty Gradebook</a>
+      <span class="role-pill">{{ role }}</span>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="foot">&copy; Northgate University &middot; Office of the Registrar</footer>
+</body>
+</html>
